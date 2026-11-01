@@ -122,18 +122,18 @@ $('settings').onclick=()=>setModal(true);$('close').onclick=()=>setModal(false);
 function frame(now){let dt=Math.min((now-last)/1000||.016,.05);last=now;if(!paused&&!document.hidden){acc+=dt;let i=0;while(acc>=1/120&&i++<6){update(1/120);saveDirty=true;acc-=1/120}}else acc=0;draw();maybeSave(now);requestAnimationFrame(frame)}$('put').onclick=shoot;$('more').onclick=()=>{cash+=50;message('已補充50幣',1)};$('reset').onclick=restartMachine;window.addEventListener('keydown',e=>{if(e.code==='Escape'){if(!$('orderModal').hidden){cancelOrder();return}if(!$('shopModal').hidden){closeShop();return}if(paused){setModal(false);return}}if(e.code==='Space'&&!paused&&!['INPUT','BUTTON'].includes(document.activeElement.tagName)){e.preventDefault();if(!e.repeat)shoot()}});document.addEventListener('visibilitychange',()=>{last=performance.now();acc=0;if(ac){if(document.hidden)ac.suspend();else if(!muted&&!paused)ac.resume().catch(()=>{})}});
 const SAVE_KEY='hk-cha-coin.shop.v1';
 const MENU=[
-{id:'egg-tart',name:'蛋撻',cat:'snack',price:100,art:'tart'},
-{id:'pineapple-bun',name:'菠蘿油',cat:'snack',price:200,art:'bun'},
-{id:'french-toast',name:'西多',cat:'snack',price:300,art:'toast'},
-{id:'hot-milk-tea',name:'熱奶茶',cat:'drink',price:160,art:'tea'},
-{id:'iced-lemon-tea',name:'凍檸茶',cat:'drink',price:200,art:'lemon'},
-{id:'yuanyang',name:'鴛鴦',cat:'drink',price:300,art:'yuanyang'},
-{id:'spam-egg-noodles',name:'餐蛋公仔麵',cat:'noodle',price:440,art:'spam'},
-{id:'preserved-veg-vermicelli',name:'雪菜肉絲米粉',cat:'noodle',price:500,art:'vermicelli'},
-{id:'satay-beef-noodles',name:'沙嗲牛肉麵',cat:'noodle',price:560,art:'satay'},
-{id:'tomato-steak-rice',name:'茄汁牛扒飯',cat:'main',price:700,art:'steak'},
-{id:'baked-pork-rice',name:'焗豬扒飯',cat:'main',price:800,art:'pork'},
-{id:'beef-chow-fun',name:'乾炒牛河',cat:'main',price:1000,art:'chowfun'}
+{id:'egg-tart',name:'蛋撻',cat:'snack',price:500,art:'tart'},
+{id:'pineapple-bun',name:'菠蘿油',cat:'snack',price:800,art:'bun'},
+{id:'french-toast',name:'西多',cat:'snack',price:900,art:'toast'},
+{id:'hot-milk-tea',name:'熱奶茶',cat:'drink',price:1000,art:'tea'},
+{id:'yuanyang',name:'熱鴛鴦',cat:'drink',price:1200,art:'yuanyang'},
+{id:'iced-lemon-tea',name:'凍檸茶',cat:'drink',price:1500,art:'lemon'},
+{id:'spam-egg-noodles',name:'餐蛋公仔麵',cat:'noodle',price:1800,art:'spam'},
+{id:'preserved-veg-vermicelli',name:'雪菜肉絲米粉',cat:'noodle',price:2000,art:'vermicelli'},
+{id:'satay-beef-noodles',name:'沙嗲牛肉麵',cat:'noodle',price:2500,art:'satay'},
+{id:'baked-pork-rice',name:'焗豬扒飯',cat:'main',price:2200,art:'pork'},
+{id:'beef-chow-fun',name:'乾炒牛河',cat:'main',price:2700,art:'chowfun'}
+{id:'tomato-steak-rice',name:'茄汁牛扒飯',cat:'main',price:3000,art:'steak'},
 ];
 const CATEGORIES=[['all','全部'],['snack','茶點'],['drink','飲品'],['noodle','粉麵'],['main','飯／炒麵']];
 let earnedTickets=0,owned={},redeemLog=[],saveDirty=false,lastSaveMs=0,saveOK=true,saveMessage='本機自動存檔',uiSound=false;
